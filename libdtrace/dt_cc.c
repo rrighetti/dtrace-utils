@@ -259,6 +259,11 @@ dt_stmt_append(dtrace_stmtdesc_t *sdp, const dt_node_t *dnp)
 			datarec = 1;
 	}
 
+	/*
+	 * Finalize the probe data description for the statement.
+	 */
+	dt_datadesc_finalize(yypcb->pcb_hdl, sdp->dtsd_ddesc);
+
 	if (dtrace_stmt_add(yypcb->pcb_hdl, yypcb->pcb_prog, sdp) != 0)
 		longjmp(yypcb->pcb_jmpbuf, dtrace_errno(yypcb->pcb_hdl));
 

@@ -644,8 +644,8 @@ hashnext:
 		aggdata->dtada_size = size;
 		aggdata->dtada_desc = agg;
 		aggdata->dtada_handle = dtp;
-		(void) dt_epid_lookup(dtp, agg->dtagd_epid,
-		    &aggdata->dtada_edesc, &aggdata->dtada_pdesc);
+		dt_epid_lookup(dtp, agg->dtagd_epid, &aggdata->dtada_ddesc,
+			       &aggdata->dtada_pdesc);
 		aggdata->dtada_normal = 1;
 
 		h->dtahe_hashval = hashval;
@@ -1631,9 +1631,9 @@ dtrace_aggregate_walk_joined(dtrace_hdl_t *dtp, dtrace_aggvarid_t *aggvars,
 				aggdata->dtada_size = agg->dtagd_size;
 				aggdata->dtada_desc = agg;
 				aggdata->dtada_handle = dtp;
-				(void) dt_epid_lookup(dtp, agg->dtagd_epid,
-				    &aggdata->dtada_edesc,
-				    &aggdata->dtada_pdesc);
+				dt_epid_lookup(dtp, agg->dtagd_epid,
+					       &aggdata->dtada_ddesc,
+					       &aggdata->dtada_pdesc);
 				aggdata->dtada_normal = 1;
 				zaggdata[i].dtahe_hashval = 0;
 				zaggdata[i].dtahe_size = agg->dtagd_size;

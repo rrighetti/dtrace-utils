@@ -490,6 +490,9 @@ dt_cg_act_trace(dt_pcb_t *pcb, dt_node_t *dnp, dtrace_actkind_t kind)
 		dt_irlist_append(dlp, dt_cg_node_alloc(DT_LBL_NONE, instr));
 		dt_regset_free(pcb->pcb_regs, dnp->dn_args->dn_reg);
 
+		dt_rec_add(pcb->pcb_hdl, DT_ACT_TRACE, sizeof(uint64_t), off,
+			   sizeof(uint64_t), NULL, 0); 
+
 		return sizeof(uint64_t);
 	} else if (dt_node_is_string(dnp->dn_args)) {
 		size_t sz = dt_node_type_size(dnp->dn_args);
